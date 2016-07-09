@@ -7,13 +7,13 @@ public class Book {
     @JsonProperty
     private final String author;
     @JsonProperty
-    private final String name;
+    private final String title;
     @JsonProperty
     private final Integer isbn;
 
-    public Book(String author, String name, Integer isbn) {
+    public Book(String author, String title, Integer isbn) {
         this.author = author;
-        this.name = name;
+        this.title = title;
         this.isbn = isbn;
     }
 
@@ -21,8 +21,8 @@ public class Book {
         return author;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public Integer getIsbn() {

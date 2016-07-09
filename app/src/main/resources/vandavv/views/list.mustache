@@ -4,8 +4,14 @@
 </head>
 <body>
 <div>
+    <h1><a href="/addRecord">Dodaj rekord</a></h1>
+    <ol>
     {{#books}}
-    <p>{{author}}, {{title}}, {{ISBN}}</p>
+        <li>Author: {{author}}<br/>Title: {{title}}<br/>ISBN: {{isbn}}</li>
+    {{/books}}
+    </ol>
+    {{^books}}
+    <p>No records</p>
     {{/books}}
 </div>
 </body>
