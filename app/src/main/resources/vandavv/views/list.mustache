@@ -3,12 +3,12 @@
     <title>List Page</title>
 </head>
 <body>
-<div>
+<div id="content">
     <h1><a href="/addRecord">Dodaj rekord</a></h1>
     <ol>
-    {{#books}}
+        {{#books}}
         <li>Author: {{author}}<br/>Title: {{title}}<br/>ISBN: {{isbn}}</li>
-    {{/books}}
+        {{/books}}
     </ol>
     {{^books}}
     <p>No records</p>
