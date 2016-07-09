@@ -1,5 +1,6 @@
 package vandavv.resources;
 
+import dao.BookDAO;
 import model.Book;
 import vandavv.views.ListView;
 
@@ -13,8 +14,15 @@ import java.util.List;
 @Produces("text/html")
 public class ListResource {
 
+    private final BookDAO dao;
+
+    public ListResource(BookDAO dao) {
+
+        this.dao = dao;
+    }
+
     @GET
-    public ListView getList() {
+    public ListView getAllBooks() {
         List<Book> books = new LinkedList<>();
         books.add(new Book("author1", "name1", 111));
         books.add(new Book("author2", "name2", 222));

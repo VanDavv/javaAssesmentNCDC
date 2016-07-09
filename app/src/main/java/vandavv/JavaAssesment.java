@@ -1,5 +1,6 @@
 package vandavv;
 
+import dao.BookDAO;
 import io.dropwizard.Application;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
@@ -10,6 +11,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 import org.skife.jdbi.v2.DBI;
+import vandavv.resources.AddResource;
 import vandavv.resources.ListResource;
 
 public class JavaAssesment extends Application<JavaAssesmentConfiguration> {
@@ -51,6 +53,9 @@ public class JavaAssesment extends Application<JavaAssesmentConfiguration> {
 
         final DBI jdbi = new DBIFactory().build(environment, configuration.getDatabase(), HEALTH_CHECK_DATABASE_NAME);
 
-        environment.jersey().register(ListResource.class);
+        final BookDAO dao = jdbi.onDemand(BookDAO.class);
+
+        environment.jersey().register(new ListResource(dao));
+        environment.jersey().register(new AddResource(dao));
     }
 }
