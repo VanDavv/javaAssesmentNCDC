@@ -7,11 +7,13 @@ import org.skife.jdbi.v2.sqlobject.SqlQuery;
 import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
+import java.util.List;
+
 @RegisterMapper(BookMapper.class)
 public interface BookDAO {
 
     @SqlQuery("SELECT isbn, author, title FROM books")
-    Book getAllBooks();
+    List<Book> getAllBooks();
 
     @SqlUpdate("INSERT INTO books VALUES (:isbn, :author, :title)")
     void addBook(@BindBean Book book);
