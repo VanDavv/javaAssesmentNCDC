@@ -6,13 +6,19 @@
 <body>
 <form method="post">
     <label for="author">Author</label>
-    <input id="author" name="author" type="text"/>
+    <input id="author"
+           name="author"
+           type="text"
+           pattern="(A{1}\w+\s?)+"
+           oninvalid="setCustomValidity('Both forename and surename must start with letter \'A\'')"
+           placeholder="Author name"
+           required/>
 
     <label for="title">Title</label>
-    <input id="title" name="title" type="text"/>
+    <input id="title" name="title" type="text" placeholder="Book name" required/>
 
     <label for="isbn">ISBN</label>
-    <input id="isbn" name="isbn" type="number"/>
+    <input id="isbn" name="isbn" type="number" placeholder="ISBN number" required/>
 
     <input type="submit" value="Add"/>
 </form>

@@ -2,8 +2,10 @@ package vandavv.resources;
 
 import dao.BookDAO;
 import model.Book;
+import org.hibernate.validator.constraints.NotEmpty;
 import vandavv.views.AddView;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -27,9 +29,9 @@ public class AddResource {
     }
 
     @POST
-    public Response addBook(@FormParam("author") String author,
-                            @FormParam("title") String title,
-                            @FormParam("isbn") Integer isbn) {
+    public Response addBook(@NotEmpty @FormParam("author") String author,
+                            @NotEmpty @FormParam("title") String title,
+                            @NotNull @FormParam("isbn") Integer isbn) {
 
         final Book book = new Book(author, title, isbn);
 
