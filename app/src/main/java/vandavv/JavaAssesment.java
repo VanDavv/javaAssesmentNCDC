@@ -8,7 +8,9 @@ import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 import org.skife.jdbi.v2.DBI;
+import vandavv.resources.ListResource;
 
 public class JavaAssesment extends Application<JavaAssesmentConfiguration> {
 
@@ -40,6 +42,8 @@ public class JavaAssesment extends Application<JavaAssesmentConfiguration> {
                 return configuration.getDatabase();
             }
         });
+
+        bootstrap.addBundle(new ViewBundle<>());
     }
 
     @Override
@@ -47,5 +51,6 @@ public class JavaAssesment extends Application<JavaAssesmentConfiguration> {
 
         final DBI jdbi = new DBIFactory().build(environment, configuration.getDatabase(), HEALTH_CHECK_DATABASE_NAME);
 
+        environment.jersey().register(ListResource.class);
     }
 }

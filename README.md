@@ -19,6 +19,10 @@ Prerequisites:
 
         java -jar app/target/app-1.0-SNAPSHOT.jar server app/javaAssesment.yml
 
+## All-in-one run command
+
+        mvn -T4 clean package ; java -jar app/target/app-1.0-SNAPSHOT.jar db migrate app/javaAssesment.yml ; java -jar app/target/app-1.0-SNAPSHOT.jar server app/javaAssesment.yml
+
 
 [Oracle jdk download link]:http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [Maven download link]: http://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache
